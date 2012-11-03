@@ -13,6 +13,6 @@ int main (int argc, char *argu[]) {
 	p = strrchr (path, '/');
 	if (p) p[0] = 0; else path = ".";
 	
-	puts (path);
+	fputs (path, stdout);
 	return 0;
 }

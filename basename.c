@@ -20,6 +20,6 @@ int main (int argc, char *argu[]) {
 	for (ii = 0; path[ii] && suffix[ii]; ii++) if (pEnd[-ii] != sEnd[-ii]) goto finish;
 	pEnd[-ii] = 0;
 	
-finish:	puts (path);
+finish:	fputs (path, stdout);
 	return 0;
 }
