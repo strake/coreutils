@@ -1,0 +1,40 @@
+.TH CMP 1
+.SH NAME
+cmp \- compare two files
+.SH SYNOPSIS
+.B cmp
+[
+.B -l
+|
+.B -s
+]
+.I f g
+[
+.I fSkip
+[
+.I gSkip
+]
+]
+.SH OPERATION
+Read and ignore xSkip bytes from x ∀ x ∈ { f, g }.
+Then compare
+.I f,
+.I g
+and write all disparities found to stdout.
+.SS FLAGS
+.TP
+.B l
+Print byte number, in decimal, and byte values, in octal, of each disparity.
+.TP
+.B s
+Write nil to stdout.
+.SH RETURN VALUE
+.TP
+0
+f = g
+.TP
+1
+f ≠ g
+.TP
+2
+Fault
