@@ -1,5 +1,3 @@
-selfName = argu[0];
-
 {
 	int ii;
 	for (ii = 1; ii < argc; ii++) {

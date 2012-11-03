@@ -179,10 +179,10 @@ int main (int argc, char *argu[]) {
 	
 	findFSRS (FSRSNoSlash);
 
-	if (!(flags & lFlag) && asprintf (&fmt, "%%N%C", rs) < 0) eprintf ("%s:", selfName);
+	if (!(flags & lFlag) && asprintf (&fmt, "%%N%C", rs) < 0) eprintf ("%s:", argu[0]);
 	if (!fmt) fmt = "%p  %l %u %g %z %m %N%n";
-	if (argc != 0) for (int ii = 0; ii < argc; ii++) ls (fmt, flags, argu[ii]);
-	else ls (fmt, flags, ".");
+	for (int ii = 1; ii < argc; ii++) ls (fmt, flags, argu[ii]);
+	if (argc <= 1) ls (fmt, flags, ".");
 	
 	return 0;
 }

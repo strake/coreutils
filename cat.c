@@ -22,7 +22,7 @@ void go (FILE *f) {
 int main (int argc, char *argu[]) {
 #include "argPrae.c"
 	case 'v':
-		eprintf ("%s -v considered harmful\n", selfName);
+		eprintf ("%s -v considered harmful\n", argu[0]);
 #include "argPost.c"
 	
 	findFSRS (0);

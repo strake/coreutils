@@ -64,8 +64,8 @@ int main (int argc, char *argu[]) {
 	
 	findFSRS (FSRSNoSlash);
 	
-	if (argc != 0) for (int ii = 0; ii < argc; ii++) du (1, bs, flags, argu[ii]);
-	else du (1, bs, flags, ".");
+	for (int ii = 1; ii < argc; ii++) du (1, bs, flags, argu[ii]);
+	if (argc <= 1) du (1, bs, flags, ".");
 	
 	return grief;
 }

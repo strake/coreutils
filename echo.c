@@ -19,8 +19,8 @@ int main (int argc, char *argu[]) {
 	
 	findFSRS (0);
 	
-	for (ii = 0; ii < argc; ii++) {
-		if (ii > 0) fputrune (fs, stdout);
+	for (ii = 1; ii < argc; ii++) {
+		if (ii > 1) fputrune (fs, stdout);
 		fputs (argu[ii], stdout);
 	}
 	if (!(flags & nFlag)) fputrune (rs, stdout);

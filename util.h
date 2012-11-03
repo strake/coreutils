@@ -15,5 +15,3 @@ long fgetrune (FILE *);
 
 int afgetln (char **, FILE *);
 int afgetr (char **, Rune, FILE *);
-
-extern char *selfName;

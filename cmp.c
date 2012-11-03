@@ -24,14 +24,14 @@ int main (int argc, char *argu[]) {
 		break;
 #include "argPost.c"
 	
-	if (argc < 2) eprintf ("%s: too few arguments\n", selfName);
+	if (argc < 3) eprintf ("%s: too few arguments\n", argu[0]);
 
 	findFSRS (0);
 	
-	f = strcmp (argu[0], "-") ? open (argu[0], O_RDONLY) : 0;
-	g = strcmp (argu[1], "-") ? open (argu[1], O_RDONLY) : 0;
+	f = strcmp (argu[1], "-") ? open (argu[1], O_RDONLY) : 0;
+	g = strcmp (argu[2], "-") ? open (argu[2], O_RDONLY) : 0;
 	
-	if (f < 0 || g < 0) enprintf (2, "%s:", selfName);
+	if (f < 0 || g < 0) enprintf (2, "%s:", argu[0]);
 	
 	if (f == g) return 0;
 	
@@ -40,7 +40,7 @@ int main (int argc, char *argu[]) {
 		char x, y;
 		m = read (f, &x, 1);
 		n = read (g, &y, 1);
-		if (m  < 0 || n  < 0) enprintf (2, "%s:", selfName);
+		if (m  < 0 || n  < 0) enprintf (2, "%s:", argu[0]);
 		if (m == 0 && n == 0) return c;
 		b++;
 		if (x == rs || y == rs) l++; /* Not sure which line numbers to use, so use both */
@@ -49,13 +49,13 @@ int main (int argc, char *argu[]) {
 			if (flags & lFlag) {
 				if (!(flags & sFlag)) printf ("%d%C%o%C%o%C", b, fs, x, fs, y, rs);
 			}
-			else enprintf (1, "%s: EOF on %s\n", selfName, argu[m?1:0]);
+			else enprintf (1, "%s: EOF on %s\n", argu[0], argu[m?2:1]);
 		}
 		if (x != y) {
 			c = 1;
 			if (!(flags & sFlag)) {
 				if (flags & lFlag) printf ("%d%C%o%C%o%C", b, fs, x, fs, y, rs);
-				else printf ("%s ≠ %s: byte %d, line %d%C", argu[0], argu[1], b, l, rs);
+				else printf ("%s ≠ %s: byte %d, line %d%C", argu[1], argu[2], b, l, rs);
 			}
 		}
 	}
