@@ -1,0 +1,19 @@
+.TH BASENAME 1
+.SH NAME
+basename \- strip leading directory names and suffix from file name
+.SH SYNOPSIS
+.B basename
+.I name
+[
+.I suffix
+]
+.SH OPERATION
+Write to stdout
+.I name
+sans (any leading directories and
+.I suffix
+).
+It is no error if
+.I suffix
+not a suffix of
+.I name.
