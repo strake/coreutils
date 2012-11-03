@@ -1,0 +1,23 @@
+.TH FOLD 1
+.SH NAME
+fold \- break long lines
+.SH SYNOPSIS
+.B fold
+[
+.B -s
+]
+[
+.B -w
+.I width
+]
+[
+.I file ...
+]
+.SH OPERATION
+Read from given files, or stdin if no files given, and break lines longer than
+.I width,
+or 80 if no width given, with $RS.
+.SS FLAGS
+.TP
+.B s
+Break only at $FS
