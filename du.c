@@ -50,7 +50,7 @@ int du (int top, int bs, int flags, char *path) {
 int main (int argc, char *argu[]) {
 	int flags = 0;
 	int bs = 512;
-#include "argPrae.h"
+#include "argPrae.c"
 	case 'a':
 		flags |= aFlag;
 		break;
@@ -60,7 +60,7 @@ int main (int argc, char *argu[]) {
 	case 'k':
 		bs = 1024;
 		break;
-#include "argPost.h"
+#include "argPost.c"
 	
 	findFSRS (FSRSNoSlash);
 	

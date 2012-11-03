@@ -153,7 +153,7 @@ int main (int argc, char *argu[]) {
 	int flags = 0;
 	char *fmt;
 	fmt = 0;
-#include "argPrae.h"
+#include "argPrae.c"
 	case 'a':
 		flags |= aFlag;
 		break;
@@ -175,7 +175,7 @@ int main (int argc, char *argu[]) {
 	case '/':
 		flags |= slashFlag;
 		break;
-#include "argPost.h"
+#include "argPost.c"
 	
 	findFSRS (FSRSNoSlash);
 

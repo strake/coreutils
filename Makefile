@@ -16,7 +16,7 @@ all:	${BIN}
 $(OBJ):	util.h config.mk
 $(BIN):	util.a
 
-cat.o cut.o fold.o: goCatlike.h
+cat.o cut.o fold.o: goCatlike.c
 
 .o:
 	${LD} -o $@ $< util.a ${LDFLAGS}

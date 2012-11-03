@@ -20,15 +20,15 @@ void go (FILE *f) {
 }
 
 int main (int argc, char *argu[]) {
-#include "argPrae.h"
+#include "argPrae.c"
 	case 'v':
 		eprintf ("%s -v considered harmful\n", selfName);
-#include "argPost.h"
+#include "argPost.c"
 	
 	findFSRS (0);
 	
 #define GO(f) go (f)
-#include "goCatlike.h"
+#include "goCatlike.c"
 	
 	return 0;
 }

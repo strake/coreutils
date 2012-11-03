@@ -11,11 +11,11 @@ int main (int argc, char *argu[]) {
 	int flags = 0;
 	int ii;
 	
-#include "argPrae.h"
+#include "argPrae.c"
 	case 'n':
 		flags |= nFlag;
 		break;
-#include "argPost.h"
+#include "argPost.c"
 	
 	findFSRS (0);
 	

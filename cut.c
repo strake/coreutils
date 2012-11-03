@@ -98,7 +98,7 @@ int main (int argc, char *argu[]) {
 	findFSRS (0);
 	
 	/* parse options */
-#include "argPrae.h"
+#include "argPrae.c"
 	case 'b':
 	case 'c':
 	case 'f':
@@ -149,7 +149,7 @@ int main (int argc, char *argu[]) {
 	case 's':
 		s = 1;
 		break;
-#include "argPost.h"
+#include "argPost.c"
 
 	if (!mode) {
 		fputs ("cut: No mode given\n", stderr);
@@ -157,7 +157,7 @@ int main (int argc, char *argu[]) {
 	}
 
 #define GO(f) go (mode, fs, s, ranges, f);	
-#include "goCatlike.h"
+#include "goCatlike.c"
 	
 	return 0;
 }

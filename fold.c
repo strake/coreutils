@@ -53,17 +53,17 @@ void go (int w, int flags, FILE *f) {
 int main (int argc, char *argu[]) {
 	int w = 80, flags = 0;
 
-#include "argPrae.h"
+#include "argPrae.c"
 	case 's':
 		flags |= sFlag;
 		break;
 	case 'w':
 		w = strtoul (argu[++ii], 0, 10);
 		goto nextArgument;
-#include "argPost.h"
+#include "argPost.c"
 	
 	findFSRS (0);
 	
 #define GO(f) go (w, flags, f)
-#include "goCatlike.h"
+#include "goCatlike.c"
 }

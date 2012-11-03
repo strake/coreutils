@@ -15,14 +15,14 @@ int main (int argc, char *argu[]) {
 	int f = 0, g = 0, flags = 0, c = 0;
 	int b = 0, l = 0; /* no. of bytes, lines read */
 	
-#include "argPrae.h"
+#include "argPrae.c"
 	case 'l':
 		flags |= lFlag;
 		break;
 	case 's':
 		flags |= sFlag;
 		break;
-#include "argPost.h"
+#include "argPost.c"
 	
 	if (argc < 2) eprintf ("%s: too few arguments\n", selfName);
 
