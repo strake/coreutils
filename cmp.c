@@ -11,8 +11,13 @@ enum {
 	sFlag = 2,
 };
 
+int lesser (int x, int y) {
+	return (x < y ? x : y);
+}
+
 int main (int argc, char *argu[]) {
 	int f = 0, g = 0, flags = 0, c = 0;
+	int fSkip = 0, gSkip = 0;
 	int b = 0, l = 0; /* no. of bytes, lines read */
 	
 #include "argPrae.c"
@@ -25,7 +30,7 @@ int main (int argc, char *argu[]) {
 #include "argPost.c"
 	
 	if (argc < 3) eprintf ("%s: too few arguments\n", argu[0]);
-
+	
 	findFSRS (0);
 	
 	f = strcmp (argu[1], "-") ? open (argu[1], O_RDONLY) : 0;
@@ -33,7 +38,20 @@ int main (int argc, char *argu[]) {
 	
 	if (f < 0 || g < 0) enprintf (2, "%s:", argu[0]);
 	
-	if (f == g) return 0;
+	if (argc >= 4) fSkip = strtoul (argu[3], 0, 10);
+	if (argc >= 5) gSkip = strtoul (argu[4], 0, 10);
+	
+	if (f == g) return (fSkip == gSkip ? 0 : 1);
+	
+	while (fSkip > 0 || gSkip > 0) {
+		int m, n;
+		char x[4096];
+		m = read (f, x, lesser (fSkip, 4096));
+		n = read (g, x, lesser (gSkip, 4096));
+		if (m < 0 || n < 0) enprintf (2, "%s:", argu[0]);
+		fSkip -= m;
+		gSkip -= n;
+	}
 	
 	for (;;) {
 		int m, n;
