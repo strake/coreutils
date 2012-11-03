@@ -20,6 +20,6 @@ case $# in
 	(3)	start="$1"; step="$2"; stop="$3";;
 esac
 
-test -z "$RS" && RS='\n';
+env | grep '^RS=' || RS='\n';
 
 exec awk -v ORS="$RS" -v wFlag="$wFlag" -v start="$start" -v stop="$stop" -v step="$step" 'BEGIN { for (n = start; n <= stop; n += step) { printf "%0*d", length (wFlag) ? length (stop) : 0, n; print; } }'
