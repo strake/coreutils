@@ -1,0 +1,14 @@
+.TH XARGS 1
+.SH NAME
+xargs \- do given utility with arguments read from stdin
+.SH SYNOPSIS
+.B xargs
+[
+.I utility
+[
+.I argument ...
+]
+]
+.SH OPERATION
+Read FS- and RS-separated arguments from stdin, and do utility once for each such argument; these arguments are passed after arguments of
+.B xargs.
