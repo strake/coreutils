@@ -37,7 +37,7 @@ case $mode in
 		if test -d "$t"; then
 			case "$t" in
 				(*/)	true;;
-				(*)	$#="$t/";;
+				(*)	t="$t/";;
 			esac
 		fi
 		case $# in
@@ -50,7 +50,7 @@ case $mode in
 					(*)	install1 "$1" "$2"; exit;;
 				esac;&
 			(*)	case "$t" in
-					(*/)	while test $# -gt 1; do install1 "$1" "$t$(basename $1)"; shift; done;;
+					(*/)	while test -n "$2"; do install1 "$1" "$t$(basename $1)"; shift; done;;
 					(*)	echo "$t: Not a directory"; exit 1;;
 				esac;;
 		esac;;
