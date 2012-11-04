@@ -1,0 +1,65 @@
+.TH INSTALL 1
+.SH NAME
+install \- install files
+.SH SYNOPSIS
+.B install
+[
+.B -m
+.I permission
+]
+[
+.B -o
+.I usr
+]
+[
+.B -g
+.I grp
+]
+(
+[
+.B -Ds
+]
+(
+.I file ... directory/
+|
+.I source target
+)
+|
+.B -d
+.I directory ...
+)
+.SH OPERATION
+With -d flag, make given
+.I directories,
+and superdirectories as needed.
+.br
+Otherwise, copy
+.I source
+as
+.I target,
+or copy all
+.I files
+to
+.I directory.
+.SS OPTIONS
+.TP
+.B D
+Make superdirectories as needed.
+.TP
+.B s
+Strip installed files with $STRIP, if defined, or else "strip".
+.TP
+.B m
+chmod
+.I permission
+all installed files.
+.TP
+.B o
+chown
+.I usr
+all installed files.
+.TP
+.B g
+chgrp
+.I grp
+all installed files.
