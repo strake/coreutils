@@ -2,12 +2,14 @@
 
 mode=f;
 DFlag='';
+SFlag='';
 sFlag='';
 unset usr grp perm;
 
-while getopts 'Ddg:m:o:s' o; do
+while getopts 'DScdg:m:o:s' o; do
 	case $o in
 		(D)	DFlag=yes;;
+		(S)	SFlag=yes;;
 		(d)	mode=d;;
 		(g)	grp="$OPTARG";;
 		(m)	perm="$OPTARG";;
@@ -20,7 +22,12 @@ shift $(dc -e "$OPTIND 1 - p");
 
 function install1 {
 	test -n $DFlag && test -n "$(dirname $2)" && mkdir -p "$(dirname $2)";
-	cp "$1" "$2";
+	if test -n $SFlag; then
+		unset TMPDIR;
+		tmp="$(mktemp -p $(dirname $2))" || exit;
+		cp "$1" "$tmp";
+		mv "$tmp" "$2";
+	else cp "$1" "$2"; fi
 	test -n "$sFlag" && "${STRIP:-strip}" "$2"
 	test -n "$usr"  && chown  "$usr" "$2";
 	test -n "$grp"  && chown :"$grp" "$2";
