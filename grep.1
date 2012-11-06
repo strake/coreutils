@@ -1,0 +1,46 @@
+.TH GREP 1
+.SH NAME
+grep \- find lines what match given RE
+.SH SYNOPSIS
+.B grep
+[
+-
+(
+.B c
+|
+.B l
+|
+.B q
+)
+]
+[
+.B -Einv
+]
+.I re
+[
+.I file ...
+]
+.SH OPERATION
+Read lines from given files, or stdin if no files given, and write to stdout each line that matches the given RE. Return 0 if match, 1 if no match, and 2 on fault.
+.SS OPTIONS
+.TP
+.B E
+Use POSIX Extended RE syntax.
+.TP
+.B c
+Rather than normal output, just show count of matches.
+.TP
+.B i
+Ignore case of letters.
+.TP
+.B l
+Rather than normal output, just show names of files with matches.
+.TP
+.B n
+Show line numbers.
+.TP
+.B v
+Invert match, i.e. find lines that match not given RE.
+.TP
+.B q
+Write nil to stdout.
