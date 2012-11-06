@@ -14,6 +14,8 @@ int inRange (Range r, unsigned int n) {
 	else return 0;
 }
 
+char *selfName;
+
 void cutLineF (Rune d, unsigned int s, Range *ranges, char *x) {
 	int n, nMax;
 	char **xs;
@@ -22,7 +24,7 @@ void cutLineF (Rune d, unsigned int s, Range *ranges, char *x) {
 		return;
 	}
 	xs = malloc (sizeof (char *) * (strlen (x) + 2));
-	if (!xs) eprintf ("cut:");
+	if (!xs) eprintf ("%s:", selfName);
 	for (n = 1; x; n++) {
 		xs[n] = x;
 		x = utfrune (x, d);
@@ -95,6 +97,8 @@ int main (int argc, char *argu[]) {
 	unsigned int s = 0;
 	Range *ranges = 0;
 	
+	selfName = argu[0];
+	
 	findFSRS (0);
 	
 	/* parse options */
@@ -104,13 +108,10 @@ int main (int argc, char *argu[]) {
 	case 'f':
 		mode = argu[ii][jj];
 		
-		if (++ii >= argc) {
-			fputs ("cut: No range argument\n", stderr);
-			return 1;
-		}
+		if (++ii >= argc) eprintf ("%s: No range argument\n", argu[0]);
 		
 		ranges = malloc (sizeof (Range) * (utflen (argu[ii]) + 1));
-		if (!ranges) eprintf ("cut:");
+		if (!ranges) eprintf ("%s:", argu[0]);
 		
 		/* ensure space delimitation for strtoul */
 		for (jj = 0; argu[ii][jj]; jj++) if (argu[ii][jj] == ',') argu[ii][jj] = ' ';
@@ -137,8 +138,7 @@ int main (int argc, char *argu[]) {
 					jj++;
 					break;
 				default:
-					fputs ("cut: Malformed ranges\n", stderr);
-					return 1;
+					eprintf ("%s: Malformed ranges\n", argu[0]);
 				}
 			}
 		}
@@ -151,11 +151,8 @@ int main (int argc, char *argu[]) {
 		break;
 #include "argPost.c"
 
-	if (!mode) {
-		fputs ("cut: No mode given\n", stderr);
-		return 1;
-	}
-
+	if (!mode) eprintf ("%s: No mode given\n", argu[0]);
+	
 #define GO(f, name) go (mode, fs, s, ranges, f);
 #include "goCatlike.c"
 	
