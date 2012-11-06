@@ -37,7 +37,6 @@ void go (int w, int flags, FILE *f) {
 			if (y) y[0] = 0; /* not print rs twice */
 			for (n = flags & bFlag ? n : utflen (x); x[0] && n > 0; n -= w) {
 				for (int m = 0; m < w; m++) {
-					fprintf (stderr, "%d\n", m);
 					if (!x[0]) break;
 					(flags & bFlag ? fputc : fputrune) (x[0], stdout);
 					x += flags & bFlag ? 1 : chartorune (&_, x);
