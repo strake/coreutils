@@ -27,7 +27,7 @@ int main (int argc, char *argu[]) {
 	
 	findFSRS (0);
 	
-#define GO(f) go (f)
+#define GO(f, name) go (f)
 #include "goCatlike.c"
 	
 	return 0;

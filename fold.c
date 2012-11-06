@@ -63,6 +63,6 @@ int main (int argc, char *argu[]) {
 	
 	findFSRS (0);
 	
-#define GO(f) go (w, flags, f)
+#define GO(f, name) go (w, flags, f)
 #include "goCatlike.c"
 }

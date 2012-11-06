@@ -156,7 +156,7 @@ int main (int argc, char *argu[]) {
 		return 1;
 	}
 
-#define GO(f) go (mode, fs, s, ranges, f);	
+#define GO(f, name) go (mode, fs, s, ranges, f);
 #include "goCatlike.c"
 	
 	return 0;
