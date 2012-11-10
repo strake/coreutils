@@ -1,0 +1,38 @@
+.TH NL 1
+.SH NAME
+nl \- show line numbers
+.SH SYNOPSIS
+.B nl
+[
+.B -b
+.I mode
+]
+[
+.B -E
+]
+[
+.I file ...
+]
+.SH OPERATION
+At start, n=0. Read lines from given files, or stdin if no files given, and for each line selected by given mode, increment and then write to stdout n, $FS, the line, and $RS.
+.SS OPTIONS
+.TP
+.B E
+Use POSIX Extended RE syntax.
+.TP
+.B b
+Mode of operation; see MODES. Default is
+.B t.
+.SS MODES
+.TP
+.B a
+Select all lines.
+.TP
+.B n
+Select no lines.
+.TP
+.B pRE
+Select lines what match RE.
+.TP
+.B t
+Select non-empty lines.
