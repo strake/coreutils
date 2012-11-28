@@ -48,9 +48,9 @@ case $mode in
 			esac
 		fi
 		case $# in
-			(0)	echo "$0: No files given";
+			(0)	echo "$0: No files given" >&2;
 				exit 1;;
-			(1)	echo "$0: No target path given";
+			(1)	echo "$0: No target path given" >&2;
 				exit 1;;
 			(2)	case "$t" in
 					(*/)	true;;
@@ -58,7 +58,7 @@ case $mode in
 				esac;&
 			(*)	case "$t" in
 					(*/)	while test -n "$2"; do install1 "$1" "$t$(basename $1)"; shift; done;;
-					(*)	echo "$t: Not a directory"; exit 1;;
+					(*)	echo "$t: Not a directory" >&2; exit 1;;
 				esac;;
 		esac;;
 esac
