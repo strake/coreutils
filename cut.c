@@ -10,8 +10,7 @@ typedef struct {
 } Range;
 
 int inRange (Range r, unsigned int n) {
-	if ((0 == r.max || n <= r.max) && n >= r.min) return 1;
-	else return 0;
+	return ((0 == r.max || n <= r.max) && n >= r.min);
 }
 
 char *selfName;
